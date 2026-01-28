@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo/new_task_Screen.dart';
 
 const appBarColor = Color(0xff9395D3);
 const backgroundColor = Color(0xffD6D7EF);
@@ -11,49 +12,58 @@ void main() {
       // функция, определяющая контекст приложения
       debugShowCheckedModeBanner:
           false, // флаг, чтобы убрать сообщение о режиме дебага
-      home: Scaffold(
-        // определяет положение блоков экрана
-        backgroundColor: backgroundColor,
-        appBar: AppBar(
-          backgroundColor: appBarColor,
-          title: Text(
-            'TODO APP',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-              fontWeight: FontWeight.bold, // жирность шрифта
-            ),
-          ),
-          actions: [
-            // TODO: заменить на изображение из figma
-            Container(
-              padding: EdgeInsets.only(right: 20), // внутренние отступы
-              child: Icon(Icons.calendar_month, color: Colors.white, size: 20),
-            ),
-          ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          // TODO: изменить форму кнопки
-          backgroundColor: appBarColor,
-          onPressed: () {},
-          child: Icon(Icons.add, color: Colors.white, size: 20),
-        ),
-        body: TodoTile(),
-        // TODO: создать column с тремя карточками
-        bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: bottomBarColor,
-          items: [
-            BottomNavigationBarItem(icon: Icon(Icons.menu), label: 'Задачи'),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.check),
-              label: 'Выполнено',
-            ),
-          ],
-        ),
-      ),
+      home: AddNewTaskScreen()
     ),
   );
 }
+
+class TasksScreen extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      // определяет положение блоков экрана
+      backgroundColor: backgroundColor,
+      appBar: AppBar(
+        backgroundColor: appBarColor,
+        title: Text(
+          'TODO APP',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.bold, // жирность шрифта
+          ),
+        ),
+        actions: [
+          // TODO: заменить на изображение из figma
+          Container(
+            padding: EdgeInsets.only(right: 20), // внутренние отступы
+            child: Icon(Icons.calendar_month, color: Colors.white, size: 20),
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        // TODO: изменить форму кнопки
+        backgroundColor: appBarColor,
+        onPressed: () {},
+        child: Icon(Icons.add, color: Colors.white, size: 20),
+      ),
+      body: TodoTile(),
+      // TODO: создать column с тремя карточками
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: bottomBarColor,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.menu), label: 'Задачи'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.check),
+            label: 'Выполнено',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 
 class TodoTile extends StatelessWidget {
   // класс задачи
