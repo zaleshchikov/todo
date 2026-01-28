@@ -4,6 +4,11 @@ import 'package:todo/new_task_Screen.dart';
 const appBarColor = Color(0xff9395D3);
 const backgroundColor = Color(0xffD6D7EF);
 const bottomBarColor = Color(0xffFFFFFF);
+List<Task> tasks = [
+  Task('Задача 1', 'detail'),
+  Task('Задача 2', 'detail'),
+  Task('Задача 3', 'detail'),
+];
 
 class Task {
   String title;
@@ -19,7 +24,7 @@ void main() {
       // функция, определяющая контекст приложения
       debugShowCheckedModeBanner:
           false, // флаг, чтобы убрать сообщение о режиме дебага
-      home: TasksScreen(),
+      home: AddNewTaskScreen(),
     ),
   );
 }
@@ -68,13 +73,6 @@ class TasksScreen extends StatelessWidget {
 }
 
 class TodoTilesList extends StatelessWidget {
-  String title = 'title';
-  String detail = 'detail';
-  List<Task> tasks = [
-    Task('Задача 1', 'detail'),
-    Task('Задача 2', 'detail'),
-    Task('Задача 3', 'detail'),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +108,7 @@ class TodoTilesList extends StatelessWidget {
                         tasks[index].title.toUpperCase(),
                         style: TextStyle(
                           color: appBarColor,
-                          fontSize: 30,
+                          fontSize: 25,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

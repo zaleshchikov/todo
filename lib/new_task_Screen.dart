@@ -3,6 +3,9 @@ import 'main.dart';
 
 class AddNewTaskScreen extends StatelessWidget{
 
+  TextEditingController titleController = TextEditingController();
+  TextEditingController detailController = TextEditingController();
+
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -27,9 +30,35 @@ class AddNewTaskScreen extends StatelessWidget{
         ),
         body: Column(
             children: [
-              //TextFiled
-              //TextFiled
-              //Container(кнопка)
+              Container(
+                padding: EdgeInsets.all(20),
+                child: TextField(
+                  controller: titleController,
+                  decoration: InputDecoration(
+                    hintText: 'Title',
+                    filled: true,
+                    fillColor: Color(0xfff2f3ff),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20)
+                    )
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(20),
+                child: TextField(
+                  controller: detailController,
+                  decoration: InputDecoration(
+                      hintText: 'Detail',
+                      filled: true,
+                      fillColor: Color(0xfff2f3ff),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)
+                      )
+                  ),
+                ),
+              ),
+              Container()
             ]
         )
     );
