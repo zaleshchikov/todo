@@ -33,7 +33,17 @@ void main() {
   );
 }
 
-class TasksScreen extends StatelessWidget {
+class TasksScreen extends StatefulWidget {
+
+  @override
+  State<TasksScreen> createState() => _TasksScreenState();
+}
+
+class _TasksScreenState extends State<TasksScreen> {
+  List<Widget> pages = [TodoTilesList(), CompletedTilesList()];
+
+  int _selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,8 +78,14 @@ class TasksScreen extends StatelessWidget {
         },
         child: Icon(Icons.add, color: Colors.white, size: 20),
       ),
-      body: TodoTilesList(),
+      body: pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
+        onTap: (index){
+          setState((){
+            _selectedIndex = index;
+          });
+        },
+        currentIndex: _selectedIndex,
         backgroundColor: bottomBarColor,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.menu), label: 'Задачи'),
