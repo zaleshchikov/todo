@@ -68,7 +68,7 @@ class TasksScreen extends StatelessWidget {
         },
         child: Icon(Icons.add, color: Colors.white, size: 20),
       ),
-      body: CompletedTilesList(),
+      body: TodoTilesList(),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: bottomBarColor,
         items: [
@@ -216,10 +216,20 @@ class _TodoTilesListState extends State<TodoTilesList> {
                           size: height * 0.03,
                         ),
                       ),
-                      Icon(
-                        Icons.check_circle_outlined,
-                        color: appBarColor,
-                        size: height * 0.03,
+                      GestureDetector(
+                        onTap: (){
+                          var task = tasks[index];
+                          tasks.remove(task);
+                          completedTasks.add(task);
+                          setState(() {
+
+                          });
+                        },
+                        child: Icon(
+                          Icons.check_circle_outlined,
+                          color: appBarColor,
+                          size: height * 0.03,
+                        ),
                       ),
                     ],
                   ),
