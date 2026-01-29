@@ -24,9 +24,14 @@ class AddNewTaskScreen extends StatelessWidget {
             ),
           ),
         ),
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 20),
-          child: Icon(Icons.arrow_back, color: Colors.white, size: 30),
+        leading: GestureDetector(
+          onTap: (){
+            Navigator.pop(context); // удаляем верхний элемент стека экранов
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(left: 20),
+            child: Icon(Icons.arrow_back, color: Colors.white, size: 30),
+          ),
         ),
         backgroundColor: appBarColor,
       ),
@@ -60,21 +65,33 @@ class AddNewTaskScreen extends StatelessWidget {
               ),
             ),
           ),
-          Center( // кнопка добавления задачи
-            child: Container(
-              width: width*0.9,
-              padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: appBarColor,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Center(
-                child: Text(
-                  'Add',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20,
+          GestureDetector(
+            onTap: () {
+              // TODO добавить валидацию
+              var newTask = Task(titleController.text, detailController.text);
+              tasks.add(newTask);
+              Navigator.pushReplacement( // переход на экран tasksScreen
+                context,
+                MaterialPageRoute(builder: (context) => TasksScreen()),
+              );
+            },
+            child: Center(
+              // кнопка добавления задачи
+              child: Container(
+                width: width * 0.9,
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: appBarColor,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Center(
+                  child: Text(
+                    'Add',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20,
+                    ),
                   ),
                 ),
               ),
